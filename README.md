@@ -70,4 +70,32 @@ churn-decision-support/
 - **Longer tenure** is protective
 - **Higher monthly charges** correlate with churn
 
+## Business Implications
+
+### Why This Matters
+
+With a base churn rate of ~27%, losing customers is the single largest drag on recurring revenue. This model identifies **who is most likely to leave before they do**, enabling the retention team to act proactively rather than reactively.
+
+### How to Use the Results
+
+| Action | Detail |
+|---|---|
+| **Prioritise outreach** | Sort `predictions.csv` by `churn_probability` descending. The top 10% segment captures ~74% true churners — focus retention spend here first. |
+| **Set a risk threshold** | Customers above the 0.66 probability cutoff are the highest-risk segment. Flag them in CRM for immediate follow-up. |
+| **Measure ROI** | If the average customer lifetime value is \$3,000 and a retention offer costs \$50, saving even 20% of the top-risk segment pays for itself many times over. |
+
+### Recommended Retention Strategies (Tied to Model Drivers)
+
+1. **Contract migration incentives** — Month-to-month customers churn at the highest rate. Offer a discount or bonus (e.g., free month, device credit) for switching to a 1-year or 2-year plan.
+
+2. **Service bundling for fiber optic users** — Fiber optic internet customers show elevated risk, likely due to higher monthly bills without matching perceived value. Bundle online security or tech support at no extra cost to increase stickiness.
+
+3. **Early-tenure engagement program** — Tenure is the strongest protective factor. Customers in their first 6–12 months are most vulnerable. Implement onboarding check-ins, usage tips, and satisfaction surveys during this window.
+
+4. **Billing review for high-spend customers** — High monthly charges correlate with churn. Proactively review bills for customers in the top charge bracket and offer plan optimisation or loyalty pricing before they comparison-shop.
+
+### Deploying in Practice
+
+This model is designed as a **batch scoring** tool — run it monthly or weekly to refresh risk scores, then feed `predictions.csv` into the CRM or marketing automation platform to trigger retention workflows automatically.
+
 See [reports/report.md](reports/report.md) for the full analysis.
