@@ -16,15 +16,42 @@ Customer churn — when a subscriber cancels their service — is one of the mos
 6. **Interpret** model coefficients to identify the strongest churn drivers
 7. **Generate outputs** — metrics CSV, ranked predictions CSV, 5 evaluation charts, and a business-readable report
 
-## Results
+## Results Dashboard
 
 | Metric | Value |
 |---|---|
-| ROC-AUC | 0.8418 |
-| PR-AUC | 0.6324 |
-| Precision @ Top 10% | 73.8% |
+| ROC-AUC | **0.8418** |
+| PR-AUC | **0.6324** |
+| Precision @ Top 10% | **73.8%** |
 
-When the retention team contacts the top 10% highest-risk customers, ~74% of those contacts are genuine churners — far better than the overall 27% base rate.
+When the retention team contacts the top 10% highest-risk customers, **~74% of those contacts are genuine churners** — far better than the overall 27% base rate.
+
+### Model Discrimination
+
+<p align="center">
+  <img src="outputs/figures/roc_curve.png" width="48%" alt="ROC Curve"/>
+  <img src="outputs/figures/pr_curve.png" width="48%" alt="Precision-Recall Curve"/>
+</p>
+
+The ROC curve (left) shows strong separation between churners and non-churners. The PR curve (right) confirms the model maintains good precision even at higher recall — important given the 27% class imbalance.
+
+### Top Churn Drivers
+
+<p align="center">
+  <img src="outputs/figures/feature_importance.png" width="75%" alt="Feature Importance"/>
+</p>
+
+Longer **tenure** and **monthly charges** (after controlling for other factors) reduce churn risk, while **fiber optic internet** and **streaming services** increase it. Two-year and one-year **contracts** are strongly protective.
+
+### Score Distribution & Risk Deciles
+
+<p align="center">
+  <img src="outputs/figures/score_distribution.png" width="48%" alt="Score Distribution"/>
+  <img src="outputs/figures/precision_by_decile.png" width="48%" alt="Precision by Decile"/>
+</p>
+
+The score distribution (left) shows good separation between the two classes. The decile chart (right) confirms the model concentrates churners in the highest-risk bucket — the top decile has a ~70%+ churn rate vs. ~3% in the lowest.
+
 
 ## Quick Start
 
