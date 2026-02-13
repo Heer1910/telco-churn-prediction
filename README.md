@@ -2,6 +2,20 @@
 
 A minimum-viable, interpretable churn prediction pipeline using logistic regression on the [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn) dataset.
 
+## Overview
+
+Customer churn — when a subscriber cancels their service — is one of the most expensive problems in telecom. This project builds a **binary classification model** that predicts which customers are likely to leave, so the retention team can intervene before it happens.
+
+### What the pipeline does, step by step:
+
+1. **Load & clean** the raw CSV (7,043 customers, 21 columns) — fix blank values in `TotalCharges`, convert Yes/No fields to 1/0
+2. **Encode features** — one-hot encode categoricals like `Contract`, `InternetService`, and `PaymentMethod` into ~30 numeric features
+3. **Split** into 80% train / 20% test (stratified by churn, fixed seed for reproducibility)
+4. **Scale & train** a Logistic Regression model with StandardScaler
+5. **Evaluate** on the held-out test set using ROC-AUC, PR-AUC, and Precision @ Top 10%
+6. **Interpret** model coefficients to identify the strongest churn drivers
+7. **Generate outputs** — metrics CSV, ranked predictions CSV, 5 evaluation charts, and a business-readable report
+
 ## Results
 
 | Metric | Value |
