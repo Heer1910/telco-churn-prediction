@@ -1,0 +1,2 @@
+roc_auc,pr_auc,precision_at_10pct,n_true_positives_top10,n_false_positives_top10,top10_cutoff,top10_count,total_test
+0.8418,0.6324,0.7376,104,37,0.6593,141,1409
